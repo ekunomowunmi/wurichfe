@@ -11,10 +11,10 @@ class App extends Component {
         return (
             <React.Fragment>
                 <Router>
-                    <div>
+                    <>
                     <NavbarPage/>
                     <Routes/>
-                    </div>
+                    </>
 
                 </Router>
 
