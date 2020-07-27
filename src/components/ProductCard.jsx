@@ -4,8 +4,9 @@ import {MDBCol,MDBCard,MDBCardBody,MDBCardImage,MDBCardTitle,MDBCardText,MDBBtn}
 //Stateless Functional Component
 const ProductCard = (props) => {
     return(
+      // style={{ width: "22rem" }}
         <MDBCol>
-              <MDBCard style={{ width: "22rem" }}>
+              <MDBCard >
                 <MDBCardImage className="img-fluid" src={props.image_Url} waves />
                 <MDBCardBody>
                   <MDBCardTitle>{props.name}</MDBCardTitle>
