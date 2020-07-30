@@ -19,7 +19,7 @@ render() {
     <React.Fragment>
     <MDBNavbar className="p-3 px-5" color="indigo" dark expand="md">
         <MDBNavbarBrand>
-          <strong className="white-text d-none d-sm-block d-md-none"><Link className="nav-link waves-effect waves-light" to="/">WuRicH</Link> </strong>
+          <strong className="white-text d-block d-sm-block d-md-none"><Link className="nav-link waves-effect waves-light" to="/">WuRicH</Link> </strong>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
