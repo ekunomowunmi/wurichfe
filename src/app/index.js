@@ -3,19 +3,20 @@ import '../App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Routes from '../routes/route';
 import NavbarPage from '../components/NavbarPage';
-// import HomePage from '../pages/Homepage';
-    // "react-router-dom": "4.3.1", package.json
+import Header from '../components/Header';
+import Footer from '../components/footer';
 class App extends Component {
-    state = {  }
+
     render() {
         return (
             <React.Fragment>
                 <Router>
                     <>
-                    <NavbarPage/>
-                    <Routes/>
+                        <Header />
+                        <NavbarPage />
+                        <Routes />
+                        <Footer />
                     </>
-
                 </Router>
 
 

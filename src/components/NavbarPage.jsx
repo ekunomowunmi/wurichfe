@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {
 MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem,  MDBNavbarToggler, MDBCollapse, MDBFormInline,
-MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
+MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon, MDBListGroup, MDBListGroupItem,
 } from "mdbreact";
 import {Link} from 'react-router-dom';
 
@@ -17,13 +17,39 @@ toggleCollapse = () => {
 render() {
   return (
     <React.Fragment>
-    <MDBNavbar color="indigo" dark expand="md">
+    <MDBNavbar className="p-3 px-5" color="indigo" dark expand="md">
         <MDBNavbarBrand>
-          <strong className="white-text"><Link className="nav-link waves-effect waves-light" to="/">WuRicH</Link> </strong>
+          <strong className="white-text d-none d-sm-block d-md-none"><Link className="nav-link waves-effect waves-light" to="/">WuRicH</Link> </strong>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
+          <MDBNavItem className="mr-5">
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <MDBIcon icon="bars" />
+                  <span className="mr-2 ml-3">Browse Categories</span>
+                </MDBDropdownToggle>
+                {/* <MDBDropdownMenu>
+                  <MDBDropdownItem href="/product/create">New Product</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">ff Action</MDBDropdownItem>
+                </MDBDropdownMenu> */}
+                <MDBDropdownMenu>
+                  <MDBListGroup style={{ width: "20rem" }}>
+                    <MDBListGroupItem href="#">Cras justo odio <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#" hover>Dapibus ac facilisis in <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#" hover>Morbi leo risus <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#" hover>Porta ac consectetur ac <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#" disabled>Vestibulum at eros <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#">Cras justo odio <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#" hover>Dapibus ac facilisis in <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#" hover>Morbi leo risus <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#" hover>Porta ac consectetur ac <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                    <MDBListGroupItem href="#" disabled>Vestibulum at eros <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
+                  </MDBListGroup>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            </MDBNavItem>
             <MDBNavItem active>
               <Link className="nav-link waves-effect waves-light" to="/">Home</Link>
             </MDBNavItem>
@@ -31,32 +57,25 @@ render() {
               <Link className="nav-link waves-effect waves-light" to="/products">Products</Link>
             </MDBNavItem>
             <MDBNavItem>
-              <Link className="nav-link waves-effect waves-light" to="#!">Pricing</Link>
+              <Link className="nav-link waves-effect waves-light" to="#!">Other Stuff1</Link>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                  <span className="mr-2">Dropdown</span>
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <MDBDropdownItem href="/product/create">New Product</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">ff Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
+              <Link className="nav-link waves-effect waves-light" to="#!">Other Stuff2</Link>
+            </MDBNavItem>
+            <MDBNavItem>
+              <Link className="nav-link waves-effect waves-light" to="#!">Other Stuff3</Link>
+            </MDBNavItem>
+            <MDBNavItem>
+              <Link className="nav-link waves-effect waves-light" to="#!">Other Stuff4</Link>
+            </MDBNavItem>
+            <MDBNavItem>
+              <Link className="nav-link waves-effect waves-light" to="#!">Other Stuff5</Link>
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
-            {/* <MDBNavItem>
-              <MDBFormInline waves>
-                <div className="md-form my-0">
-                  <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                </div>
-              </MDBFormInline>
-            </MDBNavItem> */}
             
           </MDBNavbarNav>
+
           <MDBNavbarNav right>
           <MDBNavItem>
               <MDBDropdown dropleft>
@@ -82,6 +101,7 @@ render() {
               </Link>
             </MDBNavItem>
           </MDBNavbarNav>
+
         </MDBCollapse>
       </MDBNavbar>
     </React.Fragment>
