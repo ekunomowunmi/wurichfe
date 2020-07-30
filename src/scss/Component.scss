@@ -1,0 +1,42 @@
+.font-18px {
+    font-size: 20px;
+}
+
+.font-20px {
+    font-size: 20px;
+}
+
+.font-22px {
+    font-size: 22px;
+}
+
+.font-weight-100 {
+    font-weight: 100; 
+}
+
+.font-weight-400 {
+    font-weight: 400; 
+}
+
+.font-weight-500 {
+    font-weight: 500;
+}
+
+.vh100 {
+    /* height: 100vh; */
+    min-height: 100vh;
+}
+
+.vh60 {
+    height: 60vh;
+}
+
+.brd-radius-50 {
+    border-radius: 50%;
+}
+
+.input-group.md-form.form-sm.form-1 input {
+    border: 1px solid #bdbdbd;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}

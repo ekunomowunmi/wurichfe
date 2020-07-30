@@ -5,6 +5,8 @@ import Routes from '../routes/route';
 import NavbarPage from '../components/NavbarPage';
 import { AdminHomePage, User } from '../pages';
 import AdminSideBar from '../components/AdminSideBar';
+import Header from '../components/Header';
+import Footer from '../components/footer';
 // import HomePage from '../pages/Homepage';
     // "react-router-dom": "4.3.1", package.json
 class App extends Component {
@@ -26,19 +28,15 @@ class App extends Component {
     componentDidMount = () => {
         // this.setState({loggedIn:true})
     }
+
     render() {
         return (
             <React.Fragment>
-                {/* <Router>
-                    <>
-                    <NavbarPage/>
-                    <Routes/>
-                    </>
-
-                </Router> */}
                 <Router>
                     <>
-                    {this.state.loggedIn ? <AdminHomePage loggedIn={this.state.loggedIn}/>: <User/>}
+                        <Header />
+                        {this.state.loggedIn ? <AdminHomePage loggedIn={this.state.loggedIn}/>: <User/>}
+                        <Footer />
                     </>
                 </Router>
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ProductList, ProductCreate, HomePage, AdminHomePage } from '../pages';
+import { ProductList, ProductCreate, HomePage, AdminHomePage, LoginFormPage, SignupFormPage } from '../pages';
 
 export default function Routes() {
     return(
@@ -9,9 +9,8 @@ export default function Routes() {
                     <Route path="/products" exact component = {ProductList} />
                     <Route path="/admin/product/create" exact component = {ProductCreate} />
                     <Route path="/admin/homepage" exact component = {AdminHomePage} />
-
-                    
-
+                    <Route path="/sign-up" component = {SignupFormPage} />
+                    <Route path="/login" component = {LoginFormPage} />
             </Switch>
     )
 }

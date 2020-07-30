@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import ProductCard from '../components/ProductCard'
+import ProductCard from '../components/ProductCard';
+import Banner from '../components/Banner';
+import PopularCategories from '../components/PopularCategories';
+import TopDeals from '../components/TopDeals';
+import BestSellers from '../components/BestSellers';
 import apis from '../api';
 import { MDBContainer, MDBRow } from 'mdbreact';
 import {BrowserRouter as Router, Link} from 'react-router-dom';
@@ -25,6 +29,15 @@ class HomePage extends Component {
         const {products, isLoading} = this.state;
         return ( 
             <React.Fragment>
+                {/* <div>
+                    <Banner />
+                </div> */}
+                <Banner />
+                <div className="px-5">
+                    <PopularCategories />
+                    <TopDeals />
+                    <BestSellers />
+                </div>
                 <MDBContainer>
                     <div className="homepage-bg"></div>
                     <MDBRow>

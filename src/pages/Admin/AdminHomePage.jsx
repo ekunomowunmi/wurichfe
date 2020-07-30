@@ -14,7 +14,6 @@ class AdminHomePage extends Component {
               <div className="main-content">
               <Routes/>
               </div>
-
             </React.Fragment>
          );
     }

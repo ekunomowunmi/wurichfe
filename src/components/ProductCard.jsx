@@ -19,4 +19,5 @@ const ProductCard = (props) => {
             </MDBCol>
                 );
     }
+    
 export default ProductCard;
