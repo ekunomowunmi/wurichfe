@@ -39,7 +39,7 @@ render() {
                   <span className="mr-2">Dropdown</span>
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem href="/product/create">New Product</MDBDropdownItem>
+                  <MDBDropdownItem href="//admin/product/create">New Product</MDBDropdownItem>
                   <MDBDropdownItem href="#!">ff Action</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                   <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>

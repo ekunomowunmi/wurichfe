@@ -9,6 +9,17 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+.category-list{
+    cursor: pointer;
+    color:rgb(0, 23, 128);
+}
+
+.category-list:hover{
+    color: #3f51b5;
+    font-weight: bold;
+    /* #2379ff */
+}
+
 .homepage-bg{
     background-image: url('./images/background.jpg');
     background-repeat: no-repeat;
