@@ -29,9 +29,6 @@ class HomePage extends Component {
         const {products, isLoading} = this.state;
         return ( 
             <React.Fragment>
-                {/* <div>
-                    <Banner />
-                </div> */}
                 <Banner />
                 <div className="px-5">
                     <PopularCategories />

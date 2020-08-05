@@ -4,6 +4,10 @@ import ProductCard from '../components/ProductCard'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBContainer, MDBRow} from 'mdbreact';
 import Category from '../components/Categories';
 import {Link} from 'react-router-dom';
+
+import NavbarPage from '../components/NavbarPage';
+import Header from '../components/Header';
+import Footer from '../components/footer';
 class ProductList extends Component {
     constructor(props) {
         super(props);
@@ -55,6 +59,9 @@ class ProductList extends Component {
         const {products, isLoading, categories} = this.state;
         return (
             <React.Fragment>
+                {/* <Header /> */}
+                {/* <NavbarPage /> */}
+
                     <MDBRow>
                     <MDBCol lg="3" md="3">
                         <MDBContainer>
@@ -103,6 +110,8 @@ class ProductList extends Component {
                     </MDBCol>
 
                     </MDBRow>
+
+                {/* <Footer /> */}
             </React.Fragment>
         )
     }

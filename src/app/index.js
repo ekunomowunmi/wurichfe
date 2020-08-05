@@ -3,47 +3,53 @@ import '../App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Routes from '../routes/route';
 import NavbarPage from '../components/NavbarPage';
-import { AdminHomePage, User } from '../pages';
+// import { AdminHomePage, User } from '../pages';
+import { User } from '../pages';
 import AdminSideBar from '../components/AdminSideBar';
 import Header from '../components/Header';
 import Footer from '../components/footer';
-// import HomePage from '../pages/Homepage';
-    // "react-router-dom": "4.3.1", package.json
+
+import { Provider, connect } from 'react-redux';
+import store from '../store';
+
+import jwt_decode from 'jwt-decode';
+import setAuthToken from '../utils/setAuthToken';
+import { setCurrentSeller, logoutSeller } from '../actions/authActions';
+import PrivateRoute from '../components/private-route/PrivateRoute';
+import AdminHomePage from '../pages/Admin/AdminHomePage';
+
+if (localStorage.jwtToken) {
+    const token = localStorage.jwtToken;
+    setAuthToken(token);
+    const decodedData = jwt_decode(token);
+    console.log(decodedData);
+    store.dispatch(setCurrentSeller(decodedData));
+
+    const currentTime = Date.now() / 1000;
+    console.log(currentTime);
+    // if (1596430274.601 < currentTime) {
+    if (decodedData.exp < currentTime) {
+        store.dispatch(logoutSeller());
+        window.location.href = './login';
+    }
+}
+
 class App extends Component {
-    isLoggedIn = (props) => {
-        // if(this.state.loggedIn) {
-        //     return <NavbarPage/>
-        // } else {
-        //     return <AdminSideBar/>
-        // }
-
-    }
-    constructor(props){
-        super(props);
-        this.state = {
-            loggedIn:false
-        }
-    }
-
-    componentDidMount = () => {
-        // this.setState({loggedIn:true})
-    }
-
     render() {
+        // console.log(store.getState());
+        // const auth = store.getState().auth;
+        // console.log(auth);
+
         return (
-            <React.Fragment>
+            <Provider store={store}>
                 <Router>
                     <>
-                        <Header />
-                        {this.state.loggedIn ? <AdminHomePage loggedIn={this.state.loggedIn}/>: <User/>}
-                        <Footer />
+                        <Routes />
                     </>
                 </Router>
-
-
-            </React.Fragment>
+            </Provider>
          );
     }
 }
- 
+
 export default App;

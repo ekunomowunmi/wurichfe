@@ -3,24 +3,35 @@ import '../../App.css';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Routes from '../../routes/route';
 import NavbarPage from '../../components/NavbarPage';
+import Header from '../../components/Header';
+import Footer from '../../components/footer';
+import HomePage from '../HomePage';
+import { connect } from 'react-redux';
 
 class User extends Component {
     state = {  }
     render() { 
+        const { auth } = this.props;
         return ( 
-                 <React.Fragment>
-                <Router>
-                    <>
-                    <NavbarPage/>
-                    <Routes/>
-                    </>
+            <>
+                <Header />
+                <NavbarPage />
+                {/* {!auth.isAuthenticated && <Header />}
+                {!auth.isAuthenticated && <NavbarPage />} */}
 
-                </Router>
+                <HomePage />
+                {/* <Routes /> */}
 
-
-            </React.Fragment>
+                <Footer />
+                {/* {!auth.isAuthenticated && <Footer />} */}
+            </>
          );
     }
 }
 
-export default User;
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(mapStateToProps)(User);
+// export default User;
