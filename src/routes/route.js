@@ -9,8 +9,8 @@ export default function Routes() {
                     <Route path="/products" exact component = {ProductList} />
                     <Route path="/admin/product/create" exact component = {ProductCreate} />
                     <Route path="/admin/homepage" exact component = {AdminHomePage} />
-                    <Route path="/sign-up" component = {SignupFormPage} />
-                    <Route path="/login" component = {LoginFormPage} />
+                    <Route path="/sign-up" exact component = {SignupFormPage} />
+                    <Route path="/login" exact component = {LoginFormPage} />
             </Switch>
     )
 }

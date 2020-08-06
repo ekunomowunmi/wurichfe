@@ -5,8 +5,8 @@ import {MDBCol,MDBCard,MDBCardBody,MDBCardImage,MDBCardTitle,MDBCardText,MDBBtn}
 const ProductCard = (props) => {
     return(
       // style={{ width: "22rem" }}
-        <MDBCol>
-              <MDBCard >
+        <MDBCol lg="4" md="6">
+              <MDBCard className="mb-4" >
                 <MDBCardImage className="img-fluid" src={props.image_Url} waves />
                 <MDBCardBody>
                   <MDBCardTitle>{props.name}</MDBCardTitle>
@@ -19,5 +19,5 @@ const ProductCard = (props) => {
             </MDBCol>
                 );
     }
-    
+
 export default ProductCard;

@@ -9,13 +9,11 @@ class User extends Component {
     render() { 
         return ( 
                  <React.Fragment>
-                <Router>
                     <>
                     <NavbarPage/>
                     <Routes/>
                     </>
 
-                </Router>
 
 
             </React.Fragment>
