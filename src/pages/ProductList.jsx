@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {getAllCategories} from '../actions/categoryActions';
+import {getAllProducts, getProductsByCategory} from '../actions/productActions';
 import apis from '../api';
 import ProductCard from '../components/ProductCard'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBContainer, MDBRow} from 'mdbreact';
@@ -23,31 +24,32 @@ class ProductList extends Component {
 
     componentDidMount = async () => {
         this.setState({isLoading:true})
-        this.getAllProducts();
+        await this.props.getAllProducts();
         await this.props.getAllCategories();
         console.log('here;',this.props.categories);
         // this.setState({categories: this.props.categories});
         // console.log('second:',this.state.categories);
     }
 
-    getAllProducts = async () => {
-        this.setState({isLoading:true})
-        await apis.getAllProducts().then(products => {
-            this.setState({
-                products: products.data.data,
-                // isLoading: false
-            })
-        })
-    }
+    // getAllProducts = async () => {
+    //     this.setState({isLoading:true})
+    //     await apis.getAllProducts().then(products => {
+    //         this.setState({
+    //             products: products.data.data,
+    //             // isLoading: false
+    //         })
+    //     })
+    // }
 
     getProductByCategory = async (categoryId) => {
-        this.setState({isLoading:true})
-        await apis.getProductsByCategory(categoryId).then(products => {
-            this.setState({
-                products: products.data.data,
-                isLoading: false
-            })
-        })
+        this.setState({isLoading:true});
+        await this.props.getProductsByCategory(categoryId);
+        // await apis.getProductsByCategory(categoryId).then(products => {
+        //     this.setState({
+        //         products: products.data.data,
+        //         isLoading: false
+        //     })
+        // })
     }
 
     newProduct = () => {
@@ -56,7 +58,7 @@ class ProductList extends Component {
         );
     }
     render() {
-        const {products, isLoading} = this.state;
+        const {products} = this.props.products;
         const { categories } = this.props.categories;
         return (
             <React.Fragment>
@@ -68,14 +70,14 @@ class ProductList extends Component {
                         <MDBContainer>
                         <h1>Categories</h1>
 
-                        <MDBBtn outline color="primary" size = "sm" onClick={()=> this.getAllProducts()}>Clear filters</MDBBtn><br/>
+                        <MDBBtn outline color="primary" size = "sm" onClick={()=> this.props.getAllProducts()}>Clear filters</MDBBtn><br/>
                         {
                             categories.map(category => (
                                 <MDBRow className="ml-3"  key = {category._id}>
                                 <Category
                                 id = {category._id}
                                 name = {category.name}
-                                onSelectCategory = {this.getProductByCategory}
+                                onSelectCategory = {this.props.getProductByCategory}
                                 />
                                 </MDBRow>
                             ))
@@ -137,6 +139,7 @@ class ProductList extends Component {
 //     }
 // }
 const mapStateToProps = state => ({
-    categories: state.categories
+    categories: state.categories,
+    products: state.products
 });
-export default connect(mapStateToProps, {getAllCategories})(ProductList);
+export default connect(mapStateToProps, {getAllCategories},{getAllProducts},{getProductsByCategory})(ProductList);

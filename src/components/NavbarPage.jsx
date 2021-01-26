@@ -4,6 +4,7 @@ MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem,  MDBNavbarToggler, MDBColla
 MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon, MDBListGroup, MDBListGroupItem,
 } from "mdbreact";
 import {Link} from 'react-router-dom';
+import {getAllCategories} from '../actions/categoryActions';
 
 class NavbarPage extends Component {
 state = {
@@ -14,7 +15,12 @@ toggleCollapse = () => {
   this.setState({ isOpen: !this.state.isOpen });
 }
 
+componentDidMount = async () => {
+  await this.props.getAllCategories();
+}
+
 render() {
+  const { categories } = this.props.categories;
   return (
     <React.Fragment>
     <MDBNavbar className="p-3 px-5" color="indigo" dark expand="md">
@@ -36,6 +42,11 @@ render() {
                 </MDBDropdownMenu> */}
                 <MDBDropdownMenu>
                   <MDBListGroup style={{ width: "20rem" }}>
+                    {
+                      categories.map(category => {
+                        {/* <MDBListGroupItem key={category._id} href="#" hover>nDapibus ac facilisis i <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem> */}
+                      })
+                    }
 
                     <MDBListGroupItem href="#">Cras justo odio <MDBIcon icon="angle-right" className="float-right"/>
                       {/* <MDBDropdownMenu>
@@ -48,6 +59,7 @@ render() {
                         </MDBListGroup>
                       </MDBDropdownMenu> */}
                     </MDBListGroupItem>
+
 
                     <MDBListGroupItem href="#" hover>Dapibus ac facilisis in <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
                     <MDBListGroupItem href="#" hover>Morbi leo risus <MDBIcon icon="angle-right" className="float-right"/></MDBListGroupItem>
