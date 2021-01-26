@@ -1,0 +1,18 @@
+.ProductBackground{
+    background-image: linear-gradient(270deg,#1e88e5 , #3f51b5);
+}
+
+.inputColor{
+    color:white;
+}
+
+.inputLabel{
+    color: white;
+}
+
+.inputColor::placeholder{
+    color:white;
+}
+MDBInput{
+    color:red !important;
+}

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux';
+import {getAllCategories} from '../actions/categoryActions';
 import apis from '../api';
 import ProductCard from '../components/ProductCard'
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol, MDBContainer, MDBRow} from 'mdbreact';
@@ -13,7 +15,7 @@ class ProductList extends Component {
         super(props);
         this.state = {
             products: [],
-            categories: [],
+            // categories: [],
             columns: [],
             isLoading: false
         }
@@ -21,13 +23,11 @@ class ProductList extends Component {
 
     componentDidMount = async () => {
         this.setState({isLoading:true})
-        this.getAllProducts()
-        await apis.getAllCategories().then(categories => {
-            this.setState({
-                categories: categories.data.data,
-                isLoading: false
-            })
-        })
+        this.getAllProducts();
+        await this.props.getAllCategories();
+        console.log('here;',this.props.categories);
+        // this.setState({categories: this.props.categories});
+        // console.log('second:',this.state.categories);
     }
 
     getAllProducts = async () => {
@@ -52,11 +52,12 @@ class ProductList extends Component {
 
     newProduct = () => {
         return (
-            <Link to="//admin/product/create"><MDBBtn color="primary" size = "sm" >New Product</MDBBtn></Link>
+            <Link to="/admin/product/create"><MDBBtn color="primary" size = "sm" >New Product</MDBBtn></Link>
         );
     }
     render() {
-        const {products, isLoading, categories} = this.state;
+        const {products, isLoading} = this.state;
+        const { categories } = this.props.categories;
         return (
             <React.Fragment>
                 {/* <Header /> */}
@@ -70,9 +71,8 @@ class ProductList extends Component {
                         <MDBBtn outline color="primary" size = "sm" onClick={()=> this.getAllProducts()}>Clear filters</MDBBtn><br/>
                         {
                             categories.map(category => (
-                                <MDBRow className="ml-3">
+                                <MDBRow className="ml-3"  key = {category._id}>
                                 <Category
-                                key = {category._id}
                                 id = {category._id}
                                 name = {category.name}
                                 onSelectCategory = {this.getProductByCategory}
@@ -136,5 +136,7 @@ class ProductList extends Component {
         
 //     }
 // }
- 
-export default ProductList;
+const mapStateToProps = state => ({
+    categories: state.categories
+});
+export default connect(mapStateToProps, {getAllCategories})(ProductList);

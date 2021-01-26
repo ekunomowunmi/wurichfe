@@ -16,7 +16,7 @@ export const registerSeller = (sellerData, history) => dispatch => {
             });
 };
 
-export const loginSeller = sellerData => dispatch => {
+export const loginSeller = sellerData => dispatch => { //dispatch is used to update its store
     axios.post('seller/login', sellerData)
         .then(res => {
             // console.log(res);

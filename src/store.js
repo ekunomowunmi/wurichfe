@@ -5,7 +5,7 @@ import rootReducer from './reducers/index';
 
 const initialState = {};
 
-const middleware = [thunk];
+const middleware = [thunk]; //asynchronous calls inside your actions
 
 // const store = createStore(
 //     rootReducer,

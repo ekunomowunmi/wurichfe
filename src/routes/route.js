@@ -11,7 +11,7 @@ export default function Routes() {
                     {/* <Route path="/" exact component = {HomePage} /> */}
                     <Route path="/" exact component = {User} />
                     <Route path="/products" component = {ProductList} />
-                    {/* <Route path="/admin/product/create" component = {ProductCreate} /> */}
+                    <Route path="/admin/product/create" component = {ProductCreate} />
                     {/* <Route path="/admin/homepage" component = {AdminHomePage} /> */}
                     <Route path="/sign-up" component = {SignupFormPage} />
                     <Route path="/login" component = {LoginFormPage} />
